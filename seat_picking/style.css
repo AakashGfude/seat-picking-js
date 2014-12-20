@@ -1,4 +1,3 @@
-
 fieldset{
 	width: 300px;
 	background-color:#F5F5F5;
@@ -10,7 +9,6 @@ fieldset{
 #total , #adjacent , #single{
 	color:#ff0000;
 }
-
 #holder{   
 height:400px;   
 width:550px;
@@ -25,35 +23,33 @@ top: 0px;
 left:60px;
 margin:7px;
 }
-#place a, #bronze a, #silver a{
+#place a,#bronze a,#silver a{
 font-size:0.6em;
 }
-#place li, #bronze li, #silver li
+#place li,#bronze li,#silver li
 {
  list-style: none outside none;
  position: absolute;  
 }   
-#place li:hover, #bronze li:hover, #silver li:hover
+#place li:hover,#bronze li:hover,#silver li:hover
 {
 background-color:yellow;     
 }
-#place .seat,#bronze .seat,#silver .seat{
+#place .seat{
 background:url("not_booked.png") no-repeat scroll 0 0 transparent;
 height:33px;
 width:33px;
 display:block;  
 }
-#place .selectedSeat, #bronze .selectedSeat,#silver .selectedSeat
+#place .selectedSeat
 {
 background-image:url("already_booked.png");         
 }
-#place .selectingSeat,#bronze .selectingSeat,#silver .selectingSeat
+#place .selectingSeat
 {
 background-image:url("booked.png");       
 }
-#place .row-3, #place .row-4 ,#bronze .row-3, #bronze .row-4 ,#silver .row-3, #silver .row-4{
-margin-top:10px;
-}
+
 #seatDescription li{
 verticle-align:middle;   
 list-style: none outside none;
@@ -68,6 +64,20 @@ top: 60px;
 left:60px;
 margin:7px;
 }
+#bronze .seatx{
+background:url("not_booked.png") no-repeat scroll 0 0 transparent;
+height:33px;
+width:33px;
+display:block;  
+}
+#bronze .selectedSeatx
+{
+background-image:url("already_booked.png");         
+}
+#bronze .selectingSeatx
+{
+background-image:url("booked.png");       
+}
 
 #silver {
 
@@ -76,3 +86,19 @@ top: 110px;
 left:60px;
 margin:7px;
 }
+
+#silver .seats{
+background:url("not_booked.png") no-repeat scroll 0 0 transparent;
+height:33px;
+width:33px;
+display:block;  
+}
+#silver .selectedSeats
+{
+background-image:url("already_booked.png");         
+}
+#silver .selectingSeats
+{
+background-image:url("booked.png");       
+}
+

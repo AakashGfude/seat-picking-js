@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+  <title>seat picker</title>
 <link rel="stylesheet" href="style.css"></link>
 <script src="jquery-2.1.0.js"></script>
 <script type="text/javascript" src="utils.js"></script>
@@ -64,9 +65,9 @@ var settings2 = {
                colCssPrefix: 'col-',
                seatWidth: 35, 
                seatHeight: 35,
-               seatCss: 'seat',
-               selectedSeatCss: 'selectedSeat',
-               selectingSeatCss: 'selectingSeat'                                      
+               seatCss: 'seatx',
+               selectedSeatCss: 'selectedSeatx',
+               selectingSeatCss: 'selectingSeatx'                                      
            };
 var settings3 = {
                rows: 3,
@@ -75,9 +76,9 @@ var settings3 = {
                colCssPrefix: 'col-',
                seatWidth: 35, 
                seatHeight: 35,
-               seatCss: 'seat',
-               selectedSeatCss: 'selectedSeat',
-               selectingSeatCss: 'selectingSeat'                                      
+               seatCss: 'seats',
+               selectedSeatCss: 'selectedSeats',
+               selectingSeatCss: 'selectingSeats'                                      
            };
 var str = [], seatNo, className,colNo,rowNo;
 var rowNo='A';
@@ -136,7 +137,7 @@ var init1=function(reservedSeat)
                 str1.push('<p style="margin-left:300px; font-size:200%">'+'Silver'+'</li>');
                 $('#bronze').html(str1.join(''));
 }
-var bookedSeats1 = [32,33,25,26];
+var bookedSeats1 = [32,33,25,24];
             init1(bookedSeats1);
              var str2=[];
 // this function creates the seat map for bronze category
