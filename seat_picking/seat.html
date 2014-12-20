@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css"></link>
+<script src="jquery-2.1.0.js"></script>
+<script type="text/javascript" src="utils.js"></script>
+</head>
+<body>
+<h2 id="para"> Please select seats from the category : </h2>
+ <p id="total"></p>
+ <p id="adjacent"></p>
+ <p id="single"></p>
+    <div id="holder">
+        <ul  id="place">
+
+        </ul> 
+        <ul id="bronze">
+        </ul>
+        <ul id="silver">
+        </ul>  
+    </div>
+    <div style="float:left;">
+    <ul id="seatDescription">
+        <li style="background:url('not_booked.png') no-repeat scroll 0 0 transparent;">Available Seat</li>
+        <li style="background:url('already_booked.png') no-repeat scroll 0 0 transparent;">Booked Seat</li>
+        <li style="background:url('booked.png') no-repeat scroll 0 0 transparent;">Selected Seat</li>
+    </ul>
+    </div>
+        <div style="clear:both;width:100%">
+        <input type="button" id="btnShowNew" value="Book Tickets" />         
+        </div>
+
+<script>
+// in this function, the parameter in the url whose value we want, is passed
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
+var name=decodeURIComponent($.urlParam('value1'))
+var category=$.urlParam('value3');
+var seatsselected=$.urlParam('value2');
+$("#para").append(category);
+// object containing the 
+var settings = {
+               rows: 3,
+               cols: 7,                     
+               rowCssPrefix: 'row-',
+               colCssPrefix: 'col-',
+               seatWidth: 35, 
+               seatHeight: 35,
+               seatCss: 'seat',
+               selectedSeatCss: 'selectedSeat',
+               selectingSeatCss: 'selectingSeat'                                      
+           };
+var settings2 = {
+               rows: 3,
+               cols: 4,                     
+               rowCssPrefix: 'row-',
+               colCssPrefix: 'col-',
+               seatWidth: 35, 
+               seatHeight: 35,
+               seatCss: 'seat',
+               selectedSeatCss: 'selectedSeat',
+               selectingSeatCss: 'selectingSeat'                                      
+           };
+var settings3 = {
+               rows: 3,
+               cols: 6,                     
+               rowCssPrefix: 'row-',
+               colCssPrefix: 'col-',
+               seatWidth: 35, 
+               seatHeight: 35,
+               seatCss: 'seat',
+               selectedSeatCss: 'selectedSeat',
+               selectingSeatCss: 'selectingSeat'                                      
+           };
+var str = [], seatNo, className,colNo,rowNo;
+var rowNo='A';
+var left=-50;
+// this function creates the seat map for gold category
+var init=function (reservedSeat) {
+
+              
+                for (i = 0; i < settings.rows; i++) {
+                  str.push('<li style="top:' + (((i * (settings.seatHeight))-10)).toString() + 'px;left:' + left + 'px;font-size: 200%">' +
+                                  '<a title="' + rowNo + '">' + rowNo + '</a>' +
+                                  '</li>');
+                    for (j = 0; j < settings.cols; j++) {
+                        seatNo = (j + i * settings.cols + 1);
+                        
+                        colNo=j+1;
+
+                        
+                        className = settings.seatCss + ' ' + settings.rowCssPrefix + i.toString() + ' ' + settings.colCssPrefix + j.toString();
+                        if ($.isArray(reservedSeat) && $.inArray(seatNo, reservedSeat) != -1) {
+                            className += ' ' + settings.selectedSeatCss;
+                        }
+                        str.push('<li class="' + className + '"' +
+                                  'style="top:' + (i * settings.seatHeight).toString() + 'px;left:' + (j * settings.seatWidth).toString() + 'px">' +
+                                  '<a title="' + seatNo + '">' + colNo + '</a>' +
+                                  '</li>');
+                    }rowNo=String.fromCharCode(rowNo.charCodeAt() + 1);
+                }
+                str.push('<p style="margin-left:300px; font-size:200%">'+'Gold'+'</p>');
+                $('#place').html(str.join(''));
+            };
+             var bookedSeats = [5, 6, 7,9];
+            init(bookedSeats);
+         var str1=[];
+// this function creates the seat map for silver category
+var init1=function(reservedSeat)
+{           
+       
+                for (i = 0; i < settings2.rows; i++) {
+                  str1.push('<li style="top:' + (((i * (settings2.seatHeight))-10)).toString() + 'px;left:' + left + 'px;font-size: 200%">' +
+                                  '<a title="' + rowNo + '">' + rowNo + '</a>' +
+                                  '</li>');
+                    for (j = 0; j < settings2.cols; j++) {
+                        seatNo = (21+j + i * settings2.cols + 1);
+                        colNo=j+1;
+                        className = settings2.seatCss + ' ' + settings2.rowCssPrefix + i.toString() + ' ' + settings2.colCssPrefix + j.toString();
+                        if ($.isArray(reservedSeat) && $.inArray(seatNo, reservedSeat) != -1) {
+                            className += ' ' + settings2.selectedSeatCss;
+                        }
+                        str1.push('<li class="' + className + '"' +
+                                  'style="top:' + (i * settings2.seatHeight).toString() + 'px;left:' + (j * settings2.seatWidth).toString() + 'px">' +
+                                  '<a title="' + seatNo + '">' + colNo + '</a>' +
+                                  '</li>');
+                    }rowNo=String.fromCharCode(rowNo.charCodeAt() + 1);
+                }
+                str1.push('<p style="margin-left:300px; font-size:200%">'+'Silver'+'</li>');
+                $('#bronze').html(str1.join(''));
+}
+var bookedSeats1 = [32,33,25,26];
+            init1(bookedSeats1);
+             var str2=[];
+// this function creates the seat map for bronze category
+var init2=function(reservedSeat)
+{
+ 
+       
+                for (i = 0; i < settings3.rows; i++) {
+                  str2.push('<li style="top:' + (((i * (settings3.seatHeight))-10)).toString() + 'px;left:' + left + 'px;font-size: 200%">' +
+                                  '<a title="' + rowNo + '">' + rowNo + '</a>' +
+                                  '</li>');
+                    for (j = 0; j < settings3.cols; j++) {
+                        seatNo = (33+j + i * settings3.cols + 1);
+                        colNo=j+1;
+                        className = settings3.seatCss + ' ' + settings3.rowCssPrefix + i.toString() + ' ' + settings3.colCssPrefix + j.toString();
+                        if ($.isArray(reservedSeat) && $.inArray(seatNo, reservedSeat) != -1) {
+                            className += ' ' + settings3.selectedSeatCss;
+                        }
+                        str2.push('<li class="' + className + '"' +
+                                  'style="top:' + (i * settings3.seatHeight).toString() + 'px;left:' + (j * settings3.seatWidth).toString() + 'px">' +
+                                  '<a title="' + seatNo + '">' + colNo + '</a>' +
+                                  '</li>');
+                    }rowNo=String.fromCharCode(rowNo.charCodeAt() + 1);
+                
+                }
+                str2.push('<p style="margin-left:300px; font-size:200%">'+'Bronze'+'</li>');
+                $('#silver').html(str2.join(''));
+}
+var bookedSeats2 = [38, 39, 37];
+            init2(bookedSeats2);
+if(category=="Gold")
+  place(bookedSeats);
+else if(category=="Silver")
+  silver(bookedSeats1);
+else if(category=="Bronze")
+  bronze(bookedSeats2);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bookyourshow</title>
+	<link rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+	<form id="form">
+		<fieldset width="300">
+			<legend>BookYourShow</legend>
+			<label for="username">Name:</label>
+			<input id="username" type="text"><br/>
+			<label for="seats">Seats</label>
+			<select id="seats">
+				<option>1</option>
+				<option id="2">2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select><br/>
+			<label for="categories">Class</label>
+			<select id="categories">
+				<option>Gold</option>
+				<option>Silver</option>
+				<option>Bronze</option>
+			</select><br/>
+			<button type="submit" id="submit" Onclick="kk()">Submit</button>
+		</fieldset>
+	</form>
+	<script>
+	function kk()
+	{
+		var value1=document.getElementById('username').value;
+		var e = document.getElementById("seats");
+       var value2 = e.options[e.selectedIndex].text;
+       var t= document.getElementById("categories");
+       var value3 = t.options[t.selectedIndex].text;
+		//alert(username);
+		if(value1=="")
+			alert("You cannot leave username blank");
+		else
+		{
+		var childWin=window.open('seat.html?value1='+value1+'&value2='+value2+'&value3='+value3,'child',"screenX=150,screenY=150,left=150,top=150,width=600, height=600,resizable= 1, menubar=no, scrollbars=no, status=no,  fullscreen=yes, toolbar=no");
+	}
+  //$.triggerWindowEvent(childWin,"parentMsg1",value1 );
+	}
+	</script>
+	
+</body>
+</html>
